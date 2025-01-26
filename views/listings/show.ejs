@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+</head>
+<body>
+
+    <h1>Product Listings</h1>
+
+    <% listings.forEach(function(listing) { %>
+        <div>
+            <h2><%= listing.name %></h2>
+            <p><%= listing.description %></p>
+            <p>Price: $<%= listing.price %></p>
+            <img src="<%= listing.image %>" alt="<%= listing.name %>" width="200" />
+        </div>
+    <% }); %>
+
+</body>
+</html>
