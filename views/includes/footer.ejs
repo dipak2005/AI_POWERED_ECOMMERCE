@@ -1,0 +1,78 @@
+<footer>
+    <div class="f-info">
+        <div class="f-info-socials">
+            <i class="fa-brands fa-square-facebook facebook"></i>
+            <i class="fa-brands fa-square-instagram instagram"></i>
+            <i class="fa-brands fa-x-twitter twitter"></i>
+            <i class="fa-brands fa-linkedin linkedin"></i>
+        </div>
+        <div class="f-info-text"> &copy; Wanderlust Private Limited</div>
+        <div class="f-info-links">
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background-color: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 18px; /* Reduced height */
+        font-size: 0.9rem; /* Slightly smaller text */
+    }
+
+    .f-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px; /* Reduced gap for compactness */
+    }
+
+    .f-info-socials {
+        display: flex;
+        gap: 15px; /* Less space between icons */
+        font-size: 1.5rem; /* Smaller icon size */
+    }
+
+    .f-info-socials i {
+        transition: color 0.3s ease-in-out, transform 0.2s;
+        cursor: pointer;
+    }
+
+    /* Social Media Hover Effects */
+    .facebook:hover {
+        color: #1877F2; /* Facebook Blue */
+        transform: scale(1.1);
+    }
+
+    .instagram:hover {
+        background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transform: scale(1.1);
+    }
+
+    .twitter:hover {
+        color: white; /* Twitter (X) Black */
+        transform: scale(1.1);
+    }
+
+    .linkedin:hover {
+        color: #0077B5; /* LinkedIn Blue */
+        transform: scale(1.1);
+    }
+
+    .f-info-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 8px;
+        font-size: 0.9rem; /* Slightly smaller links */
+        transition: color 0.3s ease-in-out;
+    }
+
+    .f-info-links a:hover {
+        text-decoration: underline; /* Goldish Hover */
+    }
+</style>

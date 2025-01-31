@@ -1,0 +1,50 @@
+<!-- product details in depth
+availability
+price (before and now) (discount sale)
+specifications
+reviews and ratings
+return and warranty info -->
+<% layout("layouts/boilerplate.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.name %> - Product Details</title>
+    <style>
+        .product-image {
+            width: 300px;
+            height: auto;
+        }
+        .product-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Product Details</h1>
+
+    <!-- Product Image -->
+    <div>
+        <img src="<%= listing.image %>" alt="<%= listing.name %>" class="product-image">
+    </div>
+
+    <!-- Product Name and Description -->
+    <div class="product-details">
+        <h2><%= listing.name %></h2>
+        <p><%= listing.description %></p>
+    </div>
+
+    <!-- Price -->
+    <div class="product-details">
+        <h3>Price: $<%= listing.price %></h3>
+    </div>
+
+    <!-- Product Category -->
+    <div class="product-details">
+        <h4>Category: <%= listing.category %></h4>
+    </div>
+
+</body>
+</html>
