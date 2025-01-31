@@ -20,6 +20,8 @@
   "homepage": "https://github.com/pinakviramgama/AI_POWERED_E-Commerce#readme",
   "dependencies": {
     "ejs": "^3.1.10",
+    "ejs-locals": "^1.0.2",
+    "ejs-mate": "^4.0.0",
     "express": "^4.21.2",
     "mongoose": "^8.9.5"
   }
