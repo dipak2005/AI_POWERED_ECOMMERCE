@@ -21,6 +21,13 @@ const productSchema = new mongoose.Schema({
     type: String, // URL or path to the image
     required: true,
   },
+
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
 const Product = mongoose.model("Product", productSchema);
