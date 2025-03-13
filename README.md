@@ -1,1 +1,1 @@
-# AI POWERED E-Commerce
+# AI-POWERED E-Commerce
