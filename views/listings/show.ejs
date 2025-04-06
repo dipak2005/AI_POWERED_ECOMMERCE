@@ -2,21 +2,6 @@
 <body>
     <br>
 
-      <% if (success && success.length > 0) { %>
-  <div class="alert alert-success flash-message">
-    <%= success %>
-    <div class="progress-bar"></div>  <!-- Loading bar -->
-  </div>
-<% } %>
-
-      <% if (error && error.length > 0) { %>
-  <div class="alert alert-danger flash-message">
-    <%= error %>
-    <div class="progress-bar"></div>  <!-- Loading bar -->
-  </div>
-<% } %>
-
-
     <div class="container">
         <% listings.forEach(function(listing) { %>
         <div class="product-card">
