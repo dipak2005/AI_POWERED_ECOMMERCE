@@ -23,26 +23,48 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
 
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .nine-dots {
+      font-size: 17px;
+      transition: 0.1s linear;
+      color: black;
+    }
+
+    .nine-dots:hover {
+      font-size: 19px;
+    }
+
+    .navbar {
+      border: 2px solid black;
+      padding: 8px;
+      border-radius: 15px;
+    }
+  </style>
 </head>
 <body>
 
   <br><br>
-<div class="container">
-  <div class="navbar">
-    <%- include("../includes/navbar.ejs") %>
-  </div>
-  <br>
-
+  <div class="container">
+    <div class="navbar">
+      <%- include("../includes/navbar.ejs") %>
+    </div>
+    <br>
     <%- body %>
   </div>
 
-</body>
-<br><br>
-<%- include("../includes/footer.ejs") %>
-</html>
+  <br><br>
+  <%- include("../includes/footer.ejs") %>
 
-<style>
-  .navbar {
-    width: 100%;
-  }
-</style>
+  <!-- Bootstrap JS (Popper included) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-sCsmNp1m6MJ3Kgm4S3jDGV40P56PrzXtFkz5jO47AqLkF7Xz6Ziwj2imKXos2K5P"
+          crossorigin="anonymous">
+        </script>
+
+</body>
+</html>
