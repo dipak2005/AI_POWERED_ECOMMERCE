@@ -1,2 +1,2 @@
-# AI_POWERED_ECOMMERECE
-This is online platform for shopping
+# AI_POWERED_ECOMMERCE
+This is an online platform for shopping
