@@ -1,0 +1,375 @@
+<% layout("layouts/boilerplate.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.name %> - Product Details</title>
+
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-header {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .discounted-price {
+            font-size: 1.5rem;
+            color: #c62828;
+            font-weight: 600;
+        }
+
+        .availability {
+            font-size: 1rem;
+            color: #28a745;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .specifications, .reviews, .warranty {
+            margin-top: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .specifications ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .specifications li {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-form {
+            margin-top: 2rem;
+        }
+
+        .review-form label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .review-form input[type="range"] {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .review-form textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .review-form button {
+            background-color: #c62828;
+            color: #ffffff;
+            border: none;
+            padding: 8px 8px 8px 8px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .review-form button:hover {
+            background-color: #e31919;
+        }
+
+        .review-list {
+            margin-top: 1.5rem;
+        }
+
+        .review-item {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            width: 15%;
+        }
+
+        .review-item h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .review-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .warranty-info {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .see-more {
+            text-decoration: none;
+        }
+        .see-more:hover {
+            text-decoration: underline;
+        }
+
+        .del {
+            padding: 5px;
+        }
+
+        .star-rating {
+    direction: rtl; /* Reverse order of stars for easier hover effect */
+    display: inline-block;
+    font-size: 30px;
+}
+
+.star-rating input {
+    display: none; /* Hide the radio buttons */
+}
+
+.star-rating label {
+    color: gray; /* Default color for unselected stars */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.star-rating input:checked ~ label {
+    color: gold; /* Gold color for selected stars */
+}
+
+.star-rating input:hover ~ label,
+.star-rating label:hover {
+    color: gold; /* Color stars on hover */
+}
+
+.star-rating input:checked + label,
+.star-rating input:checked + label + label,
+.star-rating input:checked + label + label + label,
+.star-rating input:checked + label + label + label + label {
+    color: gold;
+}
+
+.star-rating {
+    margin-left: 10px;
+}
+
+.star-rating label {
+    font-size: 25px;
+}
+
+.add-to-cart {
+  padding: 8px;
+  background-color: crimson;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  animation: pulse 1s infinite alternate;
+}
+
+.add-to-cart:hover {
+  background-color: green;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Product Header -->
+        <div class="product-header">
+            <!-- Product Image -->
+            <div>
+                <img src="<%= listing.image %>" alt="<%= listing.name %>" class="product-image">
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <h1 class="product-title"><%= listing.name %></h1>
+                <p class="product-description"><%= listing.description %></p>
+
+                <!-- Price -->
+                <div class="price-section">
+                    <p class="original-price">Before: <span>$166.56</span></p>
+                    <p class="discounted-price">Now: $<%= listing.price %></p>
+                </div>
+
+                <!-- Availability -->
+                <p class="availability">In Stock Available</p>
+
+                <!-- Product Category -->
+                <p>Category: <%= listing.category %></p>
+            </div>
+        </div>
+
+        <!-- Specifications -->
+        <div class="specifications">
+            <h3 class="section-title">Specifications</h3>
+            <ul>
+                <li>Material: High-quality plastic</li>
+                <li>Dimensions: 10 x 5 x 3 inches</li>
+                <li>Weight: 0.5 kg</li>
+                <li>Color: Black</li>
+            </ul>
+        </div>
+
+        <button class="add-to-cart">Add to Cart</button>
+
+
+        <!-- Reviews and Ratings -->
+        <div class="reviews">
+            <h3 class="section-title">Customer Reviews</h3>
+
+            <!-- Review List -->
+            <div class="review-list">
+
+                <div class="reviews">
+    <% if (listing.reviews.length > 0) { %>
+        <% for (let review of listing.reviews) { %>
+            <div class="review-item">
+                <h5>Author: <%= review.author || 'Anonymous' %></h5> <!-- You can include author name if available -->
+                <p><%= review.comment %></p>
+                        <span class="stars">
+            <% for (let i = 1; i <= 5; i++) { %>
+                <% if (i <= review.rating) { %>
+                     <span class="stardis"> &#9733; </span>  <!-- Filled Star -->
+                <% } else { %>
+                    <span class="stardis" > &#9734; </span>
+
+                <% } %>
+            <% } %>
+        </span>
+                <form action="/listing/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="del btn btn-danger">DELETE</button>
+                </form>
+            </div>
+        <% } %>
+    <% } else { %>
+        <p>No reviews yet. Be the first to leave a review!</p>
+    <% } %>
+</div>
+
+                <% if(listing.reviews.length >= 2) { %>
+                    <a class="see-more" href="#">see more reviews</a>
+               <%  }  %>
+
+            </div>
+<!-- Review Form -->
+<div class="review-form">
+    <h5>Leave A Review</h5>
+    <form action="/listing/review/<%= listing._id %>" method="POST">
+        <div>
+            <label for="rating">Rate this Product</label>
+            <!-- Star Rating Section -->
+            <div class="star-rating">
+                <input type="radio" name="review[rating]" id="star5" value="5" class="star" />
+                <label for="star5" class="star-label">&#9733;</label>
+
+                <input type="radio" name="review[rating]" id="star4" value="4" class="star" />
+                <label for="star4" class="star-label">&#9733;</label>
+
+                <input type="radio" name="review[rating]" id="star3" value="3" class="star" />
+                <label for="star3" class="star-label">&#9733;</label>
+
+                <input type="radio" name="review[rating]" id="star2" value="2" class="star" />
+                <label for="star2" class="star-label">&#9733;</label>
+
+                <input type="radio" name="review[rating]" id="star1" value="1" class="star" />
+                <label for="star1" class="star-label">&#9733;</label>
+            </div>
+        </div>
+        <div>
+            <label for="comment">Comment here</label>
+            <textarea name="review[comment]" id="comment" placeholder="Feedback matters"></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+        </div>
+
+        <!-- Return and Warranty Info -->
+        <div class="warranty">
+            <h3 class="section-title">Return & Warranty Information</h3>
+            <p class="warranty-info">30-day money-back guarantee. 1-year limited warranty included.</p>
+        </div>
+    </div>
+</body>
+</html>
