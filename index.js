@@ -6,17 +6,33 @@ const productRoutes = require("./backend/routes/productRoutes");
 const reviewRoutes = require("./backend/routes/reviewRoutes");
 const userRoutes = require("./backend/routes/userRoutes");
 const ExpressError = require("./backend/utils/ExpressError");
+const flash = require("connect-flash");
+const session = require("express-session");
 
 const app = express();
 const port = 3000;
 const MONGO_URL = "mongodb://localhost:27017/E-Commerce";
+app.use(express.static("public"));
+
+app.use(
+  session({
+    secret: "yourSecret",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(express.urlencoded({ extended: true }));
-
+app.use(flash());
 app.set("view engine", "ejs");
 app.engine("ejs", ejsMate);
-app.set("views", path.join(__dirname,'frontend', "views"));
+app.set("views", path.join(__dirname, "frontend", "views"));
 
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 mongoose
   .connect(MONGO_URL)
@@ -41,6 +57,6 @@ app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
 
-app.get('/test-error', (req, res) => {
-  res.render('listings/error.ejs', { message: "Test Error View" });
+app.get("/test-error", (req, res) => {
+  res.render("listings/error.ejs", { message: "Test Error View" });
 });

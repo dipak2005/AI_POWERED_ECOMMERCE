@@ -1,3 +1,4 @@
+
 <% layout("layouts/boilerplate.ejs") %>
 <!DOCTYPE html>
 <html lang="en">
@@ -252,6 +253,15 @@
     </style>
 </head>
 <body>
+
+<% if (success && success.length > 0) { %>
+    <div class="flash success"><%= success %></div>
+  <% } %>
+  <% if (error && error.length > 0) { %>
+    <div class="flash error"><%= error %></div>
+  <% } %>
+
+
     <div class="container">
         <!-- Product Header -->
         <div class="product-header">
